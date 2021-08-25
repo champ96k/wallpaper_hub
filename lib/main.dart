@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:wallpaper_hub/core/app_configs/routes_generator.dart';
 import 'package:wallpaper_hub/src/material_app_home.dart';
 
+import 'core/app_configs/service_locator.dart';
+
 void main() {
+  serviceLoactor();
   runApp(MyApp());
 }
 

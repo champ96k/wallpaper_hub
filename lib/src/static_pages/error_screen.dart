@@ -13,6 +13,7 @@ class _ErrorScreenState extends State<ErrorScreen> {
     final _size = MediaQuery.of(context).size;
     final _textTheme = Theme.of(context).textTheme;
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -35,7 +36,7 @@ class _ErrorScreenState extends State<ErrorScreen> {
                 color: Colors.grey,
               ),
             ),
-            SizedBox(height: _size.height * 0.06),
+            SizedBox(height: _size.height * 0.1),
             PrimaryButton(
               text: "Refresh",
               onTap: () => setState(() {}),
