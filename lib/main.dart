@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wallpaper_hub/src/material_app_home.dart';
 
 void main() {
   runApp(MyApp());
@@ -14,14 +15,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text("Wallpaper Hub"),
-        ),
-        body: const Center(
-          child: Text("Welcome"),
-        ),
-      ),
+      home: const MaterialAppHome(),
     );
   }
 }
