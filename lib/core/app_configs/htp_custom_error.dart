@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+@immutable
 class HtpCustomError extends Error {
   final String? code;
   final String? message;

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wallpaper_hub/core/app_configs/routes_generator.dart';
 import 'package:wallpaper_hub/src/material_app_home.dart';
 
 void main() {
@@ -9,13 +10,11 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Wallpaper Hub',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const MaterialAppHome(),
+      onGenerateRoute: RouteGenerator.generate,
+      home: MaterialAppHome(),
     );
   }
 }

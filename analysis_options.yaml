@@ -17,3 +17,4 @@ linter:
     public_member_api_docs: false
     prefer_const_constructors: true
     prefer_relative_imports: false
+    omit_local_variable_types: false

@@ -10,7 +10,7 @@ class CustomAppBar extends StatefulWidget implements PreferredSizeWidget {
 
   CustomAppBar({
     Key? key,
-    this.backgroundColor = Colors.white30,
+    this.backgroundColor = Colors.indigo,
     this.actions,
     required this.title,
     this.height = 55.0,
@@ -28,6 +28,8 @@ class _CustomAppBarState extends State<CustomAppBar> {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      elevation: 0.0,
+
       ///show status bar black color `Brightness.light`
       ///for white color `Brightness.dark`
       brightness: Brightness.dark,
@@ -37,7 +39,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
       title: Text(
         widget.title,
         style: const TextStyle(
-          color: Colors.red,
+          color: Colors.white,
           fontWeight: FontWeight.w600,
         ),
       ),
