@@ -2,14 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:wallpaper_hub/gen/assets.gen.dart';
 import 'package:wallpaper_hub/src/widget/primary_button.dart';
 
-class ErrorScreen extends StatefulWidget {
-  const ErrorScreen({Key? key}) : super(key: key);
+class GenericScreen extends StatefulWidget {
+  final String? errorMessage;
+  final String? buttonText;
+  final VoidCallback? ontab;
+
+  const GenericScreen({
+    Key? key,
+    this.errorMessage = """We couldn't find the page you\nare looking for.""",
+    this.buttonText = 'Refresh',
+    this.ontab,
+  }) : super(key: key);
 
   @override
   _ErrorScreenState createState() => _ErrorScreenState();
 }
 
-class _ErrorScreenState extends State<ErrorScreen> {
+class _ErrorScreenState extends State<GenericScreen> {
   @override
   Widget build(BuildContext context) {
     final _size = MediaQuery.of(context).size;
@@ -30,7 +39,7 @@ class _ErrorScreenState extends State<ErrorScreen> {
           ),
           SizedBox(height: _size.height * 0.02),
           Text(
-            """We couldn't find the page you\nare looking for.""",
+            "${widget.errorMessage}",
             textAlign: TextAlign.center,
             style: _textTheme.subtitle1!.copyWith(
               color: Colors.grey,
@@ -38,8 +47,8 @@ class _ErrorScreenState extends State<ErrorScreen> {
           ),
           SizedBox(height: _size.height * 0.1),
           PrimaryButton(
-            text: "Refresh",
-            onTap: () => setState(() {}),
+            text: "${widget.buttonText}",
+            onTap: widget.ontab ?? () => setState(() {}),
           )
         ],
       ),

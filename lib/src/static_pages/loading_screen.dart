@@ -13,26 +13,25 @@ class LoadingScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final _size = MediaQuery.of(context).size;
     final _textTheme = Theme.of(context).textTheme;
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              const CircularProgressIndicator(),
-              SizedBox(height: _size.height * 0.01),
-              Text(
-                "Just a few more seconds!",
-                textAlign: TextAlign.center,
-                style: _textTheme.subtitle1!.copyWith(
-                  color: Colors.grey,
-                ),
+    return Container(
+      height: _size.height * 0.83,
+      width: _size.width,
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            const CircularProgressIndicator(),
+            SizedBox(height: _size.height * 0.01),
+            Text(
+              "Just a few more seconds!",
+              textAlign: TextAlign.center,
+              style: _textTheme.subtitle1!.copyWith(
+                color: Colors.grey,
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
