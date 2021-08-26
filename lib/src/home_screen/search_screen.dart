@@ -2,20 +2,37 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wallpaper_hub/core/cubit/home_screen_cubit.dart';
 import 'package:wallpaper_hub/core/models/wallpaper_model.dart';
-import 'package:wallpaper_hub/src/home_screen/components/image_builder.dart';
 import 'package:wallpaper_hub/src/static_pages/error_screen.dart';
 import 'package:wallpaper_hub/src/widget/custom_app_bar.dart';
 
 import 'components/categories_card.dart';
+import 'components/image_builder.dart';
 import 'components/search_bar.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+class SearchScreen extends StatefulWidget {
+  final String searchText;
+  const SearchScreen({
+    Key? key,
+    required this.searchText,
+  }) : super(key: key);
+
+  @override
+  _SearchScreenState createState() => _SearchScreenState();
+}
+
+class _SearchScreenState extends State<SearchScreen> {
+  @override
+  void initState() {
+    WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
+      context.read<HomeScreenCubit>().searchImages(widget.searchText);
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(),
+      appBar: CustomAppBar(showBackButton: true),
       body: Center(
         child: SingleChildScrollView(
           physics: const ScrollPhysics(),

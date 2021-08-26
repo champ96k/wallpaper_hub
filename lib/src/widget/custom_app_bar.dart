@@ -1,20 +1,17 @@
 import 'package:flutter/material.dart';
 
 class CustomAppBar extends StatefulWidget implements PreferredSizeWidget {
-  final List<Widget>? actions;
   final bool? centerTitle;
   final double? height;
-  final String title;
-
   final Color backgroundColor;
+  final bool showBackButton;
 
   CustomAppBar({
     Key? key,
-    this.backgroundColor = Colors.indigo,
-    this.actions,
-    required this.title,
+    this.backgroundColor = Colors.white,
     this.height = 55.0,
     this.centerTitle = true,
+    this.showBackButton = false,
   })  : preferredSize = Size.fromHeight(height!),
         super(key: key);
   @override
@@ -29,19 +26,44 @@ class _CustomAppBarState extends State<CustomAppBar> {
   Widget build(BuildContext context) {
     return AppBar(
       elevation: 0.0,
-
-      ///show status bar black color `Brightness.light`
-      ///for white color `Brightness.dark`
       brightness: Brightness.dark,
       backgroundColor: widget.backgroundColor,
       centerTitle: widget.centerTitle,
-      actions: widget.actions == null ? [] : widget.actions,
-      title: Text(
-        widget.title,
-        style: const TextStyle(
-          color: Colors.white,
-          fontWeight: FontWeight.w600,
-        ),
+      leading: widget.showBackButton
+          ? IconButton(
+              onPressed: () => Navigator.pop(context),
+              icon: const Icon(
+                Icons.arrow_back_ios,
+                color: Colors.black,
+              ),
+            )
+          : const Text(""),
+      actions: [
+        IconButton(
+          onPressed: () {},
+          icon: const Icon(
+            Icons.bookmark,
+            color: Colors.grey,
+          ),
+        )
+      ],
+      title: Wrap(
+        children: [
+          const Text(
+            "Wallpaper",
+            style: TextStyle(
+              color: Colors.black,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+          const Text(
+            "Hub",
+            style: TextStyle(
+              color: Colors.indigo,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+        ],
       ),
     );
   }

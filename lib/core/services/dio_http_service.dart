@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:wallpaper_hub/core/constants/constant.dart';
 import 'package:wallpaper_hub/core/services/http_service.dart';
 
 class DioHttpService implements HttpService {
@@ -9,9 +10,7 @@ class DioHttpService implements HttpService {
     final res = await _dio.get(
       path!,
       options: Options(
-        headers: {
-          //  "x-auth-token": "$token",
-        },
+        headers: {"Authorization": Constants.key},
       ),
     );
     return res;
@@ -27,36 +26,6 @@ class DioHttpService implements HttpService {
         headers: {
           //   "x-auth-token": "$token",
           'Content-Type': 'application/json; charset=utf-8'
-        },
-      ),
-    );
-
-    return res;
-  }
-
-  @override
-  Future<Response> handlePutRequest(String path,
-      [Map<String, dynamic>? data]) async {
-    var res = await _dio.put(
-      path,
-      data: data,
-      options: Options(
-        headers: {
-          //  "x-auth-token": "$token",
-        },
-      ),
-    );
-    return res;
-  }
-
-  Future<Response> handlePatchRequest(String path,
-      [Map<String, dynamic>? data]) async {
-    var res = await _dio.patch(
-      path,
-      data: data,
-      options: Options(
-        headers: {
-          //   "x-auth-token": "$token",
         },
       ),
     );
