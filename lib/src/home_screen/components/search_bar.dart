@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:get_it/get_it.dart';
 import 'package:wallpaper_hub/core/cubit/home_screen_cubit.dart';
-import 'package:wallpaper_hub/core/repositories/wallpaper_repository.dart';
-import 'package:wallpaper_hub/src/home_screen/search_screen.dart';
+import 'package:wallpaper_hub/src/home_screen/home_screen.dart';
+
 import '../../../../core/utils/command_extenstion.dart';
 
 class SearchBar extends StatefulWidget {
@@ -45,11 +44,9 @@ class _SearchBarState extends State<SearchBar> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => BlocProvider<HomeScreenCubit>(
-                          create: (context) => HomeScreenCubit(
-                            repository: GetIt.I<WallpaperRepository>(),
-                          ),
-                          child: SearchScreen(searchText: searchText),
+                        builder: (_) => BlocProvider.value(
+                          value: BlocProvider.of<HomeScreenCubit>(context),
+                          child: HomeScreen(searchText: searchText),
                         ),
                       ),
                     );

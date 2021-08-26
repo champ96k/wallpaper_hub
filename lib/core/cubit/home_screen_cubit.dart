@@ -7,11 +7,9 @@ part 'home_screen_state.dart';
 
 class HomeScreenCubit extends Cubit<HomeScreenState> {
   final WallpaperRepository repository;
-  HomeScreenCubit({required this.repository}) : super(LoadingState()) {
-    _fectchImages();
-  }
+  HomeScreenCubit({required this.repository}) : super(LoadingState());
 
-  void _fectchImages() async {
+  void fectchImages() async {
     try {
       emit(LoadingState());
       final models = await repository.fetchImages();

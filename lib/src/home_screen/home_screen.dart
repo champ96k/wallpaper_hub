@@ -9,8 +9,29 @@ import 'package:wallpaper_hub/src/widget/custom_app_bar.dart';
 import 'components/categories_card.dart';
 import 'components/search_bar.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+class HomeScreen extends StatefulWidget {
+  final String? searchText;
+  const HomeScreen({
+    Key? key,
+    this.searchText,
+  }) : super(key: key);
+
+  @override
+  _HomeScreenState createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  @override
+  void initState() {
+    WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
+      if (widget.searchText != null) {
+        context.read<HomeScreenCubit>().searchImages("${widget.searchText}");
+      } else {
+        context.read<HomeScreenCubit>().fectchImages();
+      }
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
