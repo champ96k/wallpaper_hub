@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:wallpaper_hub/core/constants/constant.dart';
 import 'package:wallpaper_hub/core/cubit/home_screen_cubit.dart';
-import 'package:wallpaper_hub/core/models/wallpaper_model.dart';
-import 'package:wallpaper_hub/src/home_screen/components/image_builder.dart';
+import 'package:wallpaper_hub/src/home_screen/components/image_gridview.dart';
 import 'package:wallpaper_hub/src/static_pages/generic_screen.dart';
 import 'package:wallpaper_hub/src/static_pages/loading_screen.dart';
+import 'package:wallpaper_hub/src/static_pages/no_internet_connection.dart';
 import 'package:wallpaper_hub/src/widget/custom_app_bar.dart';
 
 import 'components/categories_card.dart';
@@ -45,43 +46,28 @@ class _HomeScreenState extends State<HomeScreen> {
             if (state is LoadingState) {
               return const LoadingScreen();
             } else if (state is ImageLoadedState) {
-              return Column(
-                children: [
-                  const SearchBar(),
-                  CategoriesCard(),
-                  state.models.isEmpty
-                      ? GenericScreen(
-                          buttonText: "Explore",
-                          ontab: () =>
-                              context.read<HomeScreenCubit>().fectchImages(),
-                          errorMessage:
-                              """We couldn't find the images that you\nare looking for. please explore for more images""",
-                        )
-                      : GridView.builder(
-                          shrinkWrap: true,
-                          gridDelegate:
-                              const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 2,
-                            childAspectRatio: 0.7,
-                            mainAxisSpacing: 6.0,
-                            crossAxisSpacing: 6.0,
-                          ),
-                          padding: const EdgeInsets.all(3.0),
-                          physics: const NeverScrollableScrollPhysics(),
-                          itemCount: state.models.length,
-                          itemBuilder: (context, index) {
-                            final WallpaperModel model = state.models[index];
-                            return ImageBuilder(
-                              imageUrl: "${model.src?.original}",
-                            );
-                          },
-                        ),
-                ],
-              );
+              final models = state.models;
+              return state.isNointernetConnection
+                  ? const NoInternetConnection()
+                  : Column(
+                      children: [
+                        const SearchBar(),
+                        CategoriesCard(),
+                        state.models.isEmpty
+                            ? GenericScreen(
+                                buttonText: "Explore",
+                                ontab: () => context
+                                    .read<HomeScreenCubit>()
+                                    .fectchImages(),
+                                errorMessage: Constants.noImagesFound,
+                              )
+                            : ImageGridView(models: models)
+                      ],
+                    );
             } else if (state is ErrorState) {
               return const GenericScreen();
             } else {
-              return Container();
+              return const Center(child: Text("Something went wrong"));
             }
           },
         ),

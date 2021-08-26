@@ -36,4 +36,7 @@ class Constants {
     "Documentary",
     'Event',
   ];
+
+  static const String noImagesFound =
+      """We couldn't find the images that you\nare looking for. please explore for more images""";
 }

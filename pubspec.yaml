@@ -28,8 +28,8 @@ dependencies:
   equatable: ^2.0.3
   flutter_bloc: ^7.1.0
 
-  #utils
-  intl: ^0.17.0
+  #Internet connection
+  connectivity: ^3.0.6
 
   #images
   cached_network_image: ^3.0.0

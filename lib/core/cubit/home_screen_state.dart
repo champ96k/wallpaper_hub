@@ -8,8 +8,12 @@ class LoadingState extends HomeScreenState {
 }
 
 class ImageLoadedState extends HomeScreenState {
+  final bool isNointernetConnection;
   final List<dynamic> models;
-  ImageLoadedState(this.models);
+  ImageLoadedState({
+    required this.models,
+    required this.isNointernetConnection,
+  });
   @override
   List<Object?> get props => [models];
 }
