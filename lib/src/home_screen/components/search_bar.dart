@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:wallpaper_hub/core/cubit/home_screen_cubit.dart';
+import 'package:wallpaper_hub/core/cubit/home_screen_cubit/home_screen_cubit.dart';
 import 'package:wallpaper_hub/src/home_screen/home_screen.dart';
 
 import '../../../../core/utils/command_extenstion.dart';

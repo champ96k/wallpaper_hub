@@ -2,7 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:wallpaper_hub/core/constants/constant.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:wallpaper_hub/core/cubit/home_screen_cubit.dart';
+import 'package:wallpaper_hub/core/cubit/home_screen_cubit/home_screen_cubit.dart';
 
 class CategoriesCard extends StatefulWidget {
   @override

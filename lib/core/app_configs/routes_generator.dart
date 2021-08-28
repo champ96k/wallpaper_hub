@@ -15,9 +15,8 @@ class RouteGenerator {
       case ScreenNames.imageViewScreen:
         Map<String, dynamic> args = settings.arguments as Map<String, dynamic>;
         return MaterialPageRoute(
-          builder: (context) => ImageViewScreen(
-            imageUrl: args['imageUrl'],
-            autherName: args['autherName'],
+          builder: (context) => ImageViewBuilder(
+            wallpaperModel: args['wallpaperModel'],
           ),
         );
 

@@ -21,16 +21,16 @@ class _$WallpaperModelTearOff {
   const _$WallpaperModelTearOff();
 
   _WallpaperModel call(
-      {int? id,
-      int? width,
-      int? height,
-      String? url,
-      String? photographer,
-      String? photographerUrl,
-      int? photographerId,
-      String? avgColor,
-      Src? src,
-      bool? liked}) {
+      {@HiveField(0) int? id,
+      @HiveField(1) int? width,
+      @HiveField(2) int? height,
+      @HiveField(3) String? url,
+      @HiveField(4) String? photographer,
+      @HiveField(5) String? photographerUrl,
+      @HiveField(6) int? photographerId,
+      @HiveField(7) String? avgColor,
+      @HiveField(8) Src? src,
+      @HiveField(9) bool? liked}) {
     return _WallpaperModel(
       id: id,
       width: width,
@@ -55,15 +55,25 @@ const $WallpaperModel = _$WallpaperModelTearOff();
 
 /// @nodoc
 mixin _$WallpaperModel {
+  @HiveField(0)
   int? get id => throw _privateConstructorUsedError;
+  @HiveField(1)
   int? get width => throw _privateConstructorUsedError;
+  @HiveField(2)
   int? get height => throw _privateConstructorUsedError;
+  @HiveField(3)
   String? get url => throw _privateConstructorUsedError;
+  @HiveField(4)
   String? get photographer => throw _privateConstructorUsedError;
+  @HiveField(5)
   String? get photographerUrl => throw _privateConstructorUsedError;
+  @HiveField(6)
   int? get photographerId => throw _privateConstructorUsedError;
+  @HiveField(7)
   String? get avgColor => throw _privateConstructorUsedError;
+  @HiveField(8)
   Src? get src => throw _privateConstructorUsedError;
+  @HiveField(9)
   bool? get liked => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -78,16 +88,16 @@ abstract class $WallpaperModelCopyWith<$Res> {
           WallpaperModel value, $Res Function(WallpaperModel) then) =
       _$WallpaperModelCopyWithImpl<$Res>;
   $Res call(
-      {int? id,
-      int? width,
-      int? height,
-      String? url,
-      String? photographer,
-      String? photographerUrl,
-      int? photographerId,
-      String? avgColor,
-      Src? src,
-      bool? liked});
+      {@HiveField(0) int? id,
+      @HiveField(1) int? width,
+      @HiveField(2) int? height,
+      @HiveField(3) String? url,
+      @HiveField(4) String? photographer,
+      @HiveField(5) String? photographerUrl,
+      @HiveField(6) int? photographerId,
+      @HiveField(7) String? avgColor,
+      @HiveField(8) Src? src,
+      @HiveField(9) bool? liked});
 
   $SrcCopyWith<$Res>? get src;
 }
@@ -178,16 +188,16 @@ abstract class _$WallpaperModelCopyWith<$Res>
       __$WallpaperModelCopyWithImpl<$Res>;
   @override
   $Res call(
-      {int? id,
-      int? width,
-      int? height,
-      String? url,
-      String? photographer,
-      String? photographerUrl,
-      int? photographerId,
-      String? avgColor,
-      Src? src,
-      bool? liked});
+      {@HiveField(0) int? id,
+      @HiveField(1) int? width,
+      @HiveField(2) int? height,
+      @HiveField(3) String? url,
+      @HiveField(4) String? photographer,
+      @HiveField(5) String? photographerUrl,
+      @HiveField(6) int? photographerId,
+      @HiveField(7) String? avgColor,
+      @HiveField(8) Src? src,
+      @HiveField(9) bool? liked});
 
   @override
   $SrcCopyWith<$Res>? get src;
@@ -264,41 +274,52 @@ class __$WallpaperModelCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
+@HiveType(typeId: 0)
 class _$_WallpaperModel implements _WallpaperModel {
   const _$_WallpaperModel(
-      {this.id,
-      this.width,
-      this.height,
-      this.url,
-      this.photographer,
-      this.photographerUrl,
-      this.photographerId,
-      this.avgColor,
-      this.src,
-      this.liked});
+      {@HiveField(0) this.id,
+      @HiveField(1) this.width,
+      @HiveField(2) this.height,
+      @HiveField(3) this.url,
+      @HiveField(4) this.photographer,
+      @HiveField(5) this.photographerUrl,
+      @HiveField(6) this.photographerId,
+      @HiveField(7) this.avgColor,
+      @HiveField(8) this.src,
+      @HiveField(9) this.liked});
 
   factory _$_WallpaperModel.fromJson(Map<String, dynamic> json) =>
       _$_$_WallpaperModelFromJson(json);
 
   @override
+  @HiveField(0)
   final int? id;
   @override
+  @HiveField(1)
   final int? width;
   @override
+  @HiveField(2)
   final int? height;
   @override
+  @HiveField(3)
   final String? url;
   @override
+  @HiveField(4)
   final String? photographer;
   @override
+  @HiveField(5)
   final String? photographerUrl;
   @override
+  @HiveField(6)
   final int? photographerId;
   @override
+  @HiveField(7)
   final String? avgColor;
   @override
+  @HiveField(8)
   final Src? src;
   @override
+  @HiveField(9)
   final bool? liked;
 
   @override
@@ -363,39 +384,49 @@ class _$_WallpaperModel implements _WallpaperModel {
 
 abstract class _WallpaperModel implements WallpaperModel {
   const factory _WallpaperModel(
-      {int? id,
-      int? width,
-      int? height,
-      String? url,
-      String? photographer,
-      String? photographerUrl,
-      int? photographerId,
-      String? avgColor,
-      Src? src,
-      bool? liked}) = _$_WallpaperModel;
+      {@HiveField(0) int? id,
+      @HiveField(1) int? width,
+      @HiveField(2) int? height,
+      @HiveField(3) String? url,
+      @HiveField(4) String? photographer,
+      @HiveField(5) String? photographerUrl,
+      @HiveField(6) int? photographerId,
+      @HiveField(7) String? avgColor,
+      @HiveField(8) Src? src,
+      @HiveField(9) bool? liked}) = _$_WallpaperModel;
 
   factory _WallpaperModel.fromJson(Map<String, dynamic> json) =
       _$_WallpaperModel.fromJson;
 
   @override
+  @HiveField(0)
   int? get id => throw _privateConstructorUsedError;
   @override
+  @HiveField(1)
   int? get width => throw _privateConstructorUsedError;
   @override
+  @HiveField(2)
   int? get height => throw _privateConstructorUsedError;
   @override
+  @HiveField(3)
   String? get url => throw _privateConstructorUsedError;
   @override
+  @HiveField(4)
   String? get photographer => throw _privateConstructorUsedError;
   @override
+  @HiveField(5)
   String? get photographerUrl => throw _privateConstructorUsedError;
   @override
+  @HiveField(6)
   int? get photographerId => throw _privateConstructorUsedError;
   @override
+  @HiveField(7)
   String? get avgColor => throw _privateConstructorUsedError;
   @override
+  @HiveField(8)
   Src? get src => throw _privateConstructorUsedError;
   @override
+  @HiveField(9)
   bool? get liked => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
@@ -412,14 +443,14 @@ class _$SrcTearOff {
   const _$SrcTearOff();
 
   _Src call(
-      {String? original,
-      String? large2X,
-      String? large,
-      String? medium,
-      String? small,
-      String? portrait,
-      String? landscape,
-      String? tiny}) {
+      {@HiveField(0) String? original,
+      @HiveField(1) String? large2X,
+      @HiveField(2) String? large,
+      @HiveField(3) String? medium,
+      @HiveField(4) String? small,
+      @HiveField(5) String? portrait,
+      @HiveField(6) String? landscape,
+      @HiveField(7) String? tiny}) {
     return _Src(
       original: original,
       large2X: large2X,
@@ -442,13 +473,21 @@ const $Src = _$SrcTearOff();
 
 /// @nodoc
 mixin _$Src {
+  @HiveField(0)
   String? get original => throw _privateConstructorUsedError;
+  @HiveField(1)
   String? get large2X => throw _privateConstructorUsedError;
+  @HiveField(2)
   String? get large => throw _privateConstructorUsedError;
+  @HiveField(3)
   String? get medium => throw _privateConstructorUsedError;
+  @HiveField(4)
   String? get small => throw _privateConstructorUsedError;
+  @HiveField(5)
   String? get portrait => throw _privateConstructorUsedError;
+  @HiveField(6)
   String? get landscape => throw _privateConstructorUsedError;
+  @HiveField(7)
   String? get tiny => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -461,14 +500,14 @@ abstract class $SrcCopyWith<$Res> {
   factory $SrcCopyWith(Src value, $Res Function(Src) then) =
       _$SrcCopyWithImpl<$Res>;
   $Res call(
-      {String? original,
-      String? large2X,
-      String? large,
-      String? medium,
-      String? small,
-      String? portrait,
-      String? landscape,
-      String? tiny});
+      {@HiveField(0) String? original,
+      @HiveField(1) String? large2X,
+      @HiveField(2) String? large,
+      @HiveField(3) String? medium,
+      @HiveField(4) String? small,
+      @HiveField(5) String? portrait,
+      @HiveField(6) String? landscape,
+      @HiveField(7) String? tiny});
 }
 
 /// @nodoc
@@ -533,14 +572,14 @@ abstract class _$SrcCopyWith<$Res> implements $SrcCopyWith<$Res> {
       __$SrcCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String? original,
-      String? large2X,
-      String? large,
-      String? medium,
-      String? small,
-      String? portrait,
-      String? landscape,
-      String? tiny});
+      {@HiveField(0) String? original,
+      @HiveField(1) String? large2X,
+      @HiveField(2) String? large,
+      @HiveField(3) String? medium,
+      @HiveField(4) String? small,
+      @HiveField(5) String? portrait,
+      @HiveField(6) String? landscape,
+      @HiveField(7) String? tiny});
 }
 
 /// @nodoc
@@ -602,34 +641,43 @@ class __$SrcCopyWithImpl<$Res> extends _$SrcCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
+@HiveType(typeId: 1)
 class _$_Src implements _Src {
   const _$_Src(
-      {this.original,
-      this.large2X,
-      this.large,
-      this.medium,
-      this.small,
-      this.portrait,
-      this.landscape,
-      this.tiny});
+      {@HiveField(0) this.original,
+      @HiveField(1) this.large2X,
+      @HiveField(2) this.large,
+      @HiveField(3) this.medium,
+      @HiveField(4) this.small,
+      @HiveField(5) this.portrait,
+      @HiveField(6) this.landscape,
+      @HiveField(7) this.tiny});
 
   factory _$_Src.fromJson(Map<String, dynamic> json) => _$_$_SrcFromJson(json);
 
   @override
+  @HiveField(0)
   final String? original;
   @override
+  @HiveField(1)
   final String? large2X;
   @override
+  @HiveField(2)
   final String? large;
   @override
+  @HiveField(3)
   final String? medium;
   @override
+  @HiveField(4)
   final String? small;
   @override
+  @HiveField(5)
   final String? portrait;
   @override
+  @HiveField(6)
   final String? landscape;
   @override
+  @HiveField(7)
   final String? tiny;
 
   @override
@@ -688,32 +736,40 @@ class _$_Src implements _Src {
 
 abstract class _Src implements Src {
   const factory _Src(
-      {String? original,
-      String? large2X,
-      String? large,
-      String? medium,
-      String? small,
-      String? portrait,
-      String? landscape,
-      String? tiny}) = _$_Src;
+      {@HiveField(0) String? original,
+      @HiveField(1) String? large2X,
+      @HiveField(2) String? large,
+      @HiveField(3) String? medium,
+      @HiveField(4) String? small,
+      @HiveField(5) String? portrait,
+      @HiveField(6) String? landscape,
+      @HiveField(7) String? tiny}) = _$_Src;
 
   factory _Src.fromJson(Map<String, dynamic> json) = _$_Src.fromJson;
 
   @override
+  @HiveField(0)
   String? get original => throw _privateConstructorUsedError;
   @override
+  @HiveField(1)
   String? get large2X => throw _privateConstructorUsedError;
   @override
+  @HiveField(2)
   String? get large => throw _privateConstructorUsedError;
   @override
+  @HiveField(3)
   String? get medium => throw _privateConstructorUsedError;
   @override
+  @HiveField(4)
   String? get small => throw _privateConstructorUsedError;
   @override
+  @HiveField(5)
   String? get portrait => throw _privateConstructorUsedError;
   @override
+  @HiveField(6)
   String? get landscape => throw _privateConstructorUsedError;
   @override
+  @HiveField(7)
   String? get tiny => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)

@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 class LoadingScreen extends StatelessWidget {
   final String loadingText;
   final Color circularProgressIndicatorColor;
+  final String descText;
   const LoadingScreen({
     Key? key,
     this.loadingText = "Loading",
+    this.descText = "Just a few more seconds!",
     this.circularProgressIndicatorColor = const Color(0xffFFC0CB),
   }) : super(key: key);
 
@@ -25,7 +27,7 @@ class LoadingScreen extends StatelessWidget {
             const CircularProgressIndicator(),
             SizedBox(height: _size.height * 0.01),
             Text(
-              "Just a few more seconds!",
+              descText,
               textAlign: TextAlign.center,
               style: _textTheme.subtitle1!.copyWith(
                 color: Colors.grey,

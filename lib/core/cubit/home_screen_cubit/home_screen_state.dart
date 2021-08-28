@@ -4,7 +4,7 @@ abstract class HomeScreenState extends Equatable {}
 
 class LoadingState extends HomeScreenState {
   @override
-  List<Object?> get props => [];
+  List<Object?> get props => ['LoadingState'];
 }
 
 class ImageLoadedState extends HomeScreenState {

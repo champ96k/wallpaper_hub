@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wallpaper_hub/core/constants/constant.dart';
-import 'package:wallpaper_hub/core/cubit/home_screen_cubit.dart';
+import 'package:wallpaper_hub/core/cubit/home_screen_cubit/home_screen_cubit.dart';
 import 'package:wallpaper_hub/src/home_screen/components/image_gridview.dart';
 import 'package:wallpaper_hub/src/static_pages/generic_screen.dart';
 import 'package:wallpaper_hub/src/static_pages/loading_screen.dart';
 import 'package:wallpaper_hub/src/static_pages/no_internet_connection.dart';
+import 'package:wallpaper_hub/src/widget/custom_app_bar.dart';
 
 import 'components/categories_card.dart';
 import 'components/search_bar.dart';
@@ -37,6 +38,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: CustomAppBar(height: widget.searchText != null ? 55.0 : 0.0),
       body: SingleChildScrollView(
         physics: const ScrollPhysics(),
         child: BlocBuilder<HomeScreenCubit, HomeScreenState>(

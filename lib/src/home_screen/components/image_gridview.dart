@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:wallpaper_hub/core/app_configs/screen_names.dart';
 import 'package:wallpaper_hub/core/models/wallpaper_model.dart';
+import 'package:wallpaper_hub/src/home_screen/image_view_screen.dart';
 
 import 'image_builder.dart';
 
@@ -22,17 +23,16 @@ class ImageGridView extends StatelessWidget {
       physics: const NeverScrollableScrollPhysics(),
       itemCount: models.length,
       itemBuilder: (context, index) {
-        final WallpaperModel model = models[index];
+        final WallpaperModel wallpaperModel = models[index];
         return GestureDetector(
           onTap: () {
-            Navigator.pushNamed(context, ScreenNames.imageViewScreen,
-                arguments: {
-                  "imageUrl": model.src?.original,
-                  "autherName": model.photographer,
-                });
+            Navigator.of(context).pushNamed(
+              ScreenNames.imageViewScreen,
+              arguments: {"wallpaperModel": wallpaperModel},
+            );
           },
           child: ImageBuilder(
-            imageUrl: "${model.src?.original}",
+            imageUrl: "${wallpaperModel.src?.original}",
           ),
         );
       },

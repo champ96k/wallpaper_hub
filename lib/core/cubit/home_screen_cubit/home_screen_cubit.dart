@@ -2,7 +2,6 @@ import 'package:bloc/bloc.dart';
 import 'package:connectivity/connectivity.dart';
 import 'package:equatable/equatable.dart';
 import 'package:wallpaper_hub/core/constants/constant.dart';
-import 'package:wallpaper_hub/core/models/wallpaper_model.dart';
 import 'package:wallpaper_hub/core/repositories/wallpaper_repository.dart';
 
 part 'home_screen_state.dart';
@@ -16,8 +15,7 @@ class HomeScreenCubit extends Cubit<HomeScreenState> {
     final _connectivityResult = await (Connectivity().checkConnectivity());
     print(_connectivityResult);
     if (_connectivityResult == ConnectivityResult.none) {
-      final models = await getBookmarksImages();
-      emit(ImageLoadedState(models: models, isNointernetConnection: true));
+      emit(ImageLoadedState(models: [], isNointernetConnection: true));
     } else {
       try {
         final models = await repository.fetchImages();
@@ -38,11 +36,5 @@ class HomeScreenCubit extends Cubit<HomeScreenState> {
     } catch (e) {
       emit(ErrorState("Error: $e"));
     }
-  }
-
-  void saveToBookmarks(WallpaperModel model) async {}
-
-  Future<List<WallpaperModel>> getBookmarksImages() async {
-    return [];
   }
 }
