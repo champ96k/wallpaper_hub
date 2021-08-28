@@ -4,8 +4,6 @@
 /// *****************************************************
 
 import 'package:flutter/widgets.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutter/services.dart';
 
 class $AssetsColorsGen {
   const $AssetsColorsGen();
@@ -16,12 +14,8 @@ class $AssetsColorsGen {
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
-  AssetGenImage get crash404Copy =>
-      const AssetGenImage('assets/images/crash404 copy.gif');
   AssetGenImage get notFound =>
       const AssetGenImage('assets/images/notFound .png');
-  SvgGenImage get pushNotification =>
-      const SvgGenImage('assets/images/push_notification .svg');
 }
 
 class Assets {
@@ -78,49 +72,4 @@ class AssetGenImage extends AssetImage {
   }
 
   String get path => assetName;
-}
-
-class SvgGenImage {
-  const SvgGenImage(this._assetName);
-
-  final String _assetName;
-
-  SvgPicture svg({
-    Key? key,
-    bool matchTextDirection = false,
-    AssetBundle? bundle,
-    String? package,
-    double? width,
-    double? height,
-    BoxFit fit = BoxFit.contain,
-    AlignmentGeometry alignment = Alignment.center,
-    bool allowDrawingOutsideViewBox = false,
-    WidgetBuilder? placeholderBuilder,
-    Color? color,
-    BlendMode colorBlendMode = BlendMode.srcIn,
-    String? semanticsLabel,
-    bool excludeFromSemantics = false,
-    Clip clipBehavior = Clip.hardEdge,
-  }) {
-    return SvgPicture.asset(
-      _assetName,
-      key: key,
-      matchTextDirection: matchTextDirection,
-      bundle: bundle,
-      package: package,
-      width: width,
-      height: height,
-      fit: fit,
-      alignment: alignment,
-      allowDrawingOutsideViewBox: allowDrawingOutsideViewBox,
-      placeholderBuilder: placeholderBuilder,
-      color: color,
-      colorBlendMode: colorBlendMode,
-      semanticsLabel: semanticsLabel,
-      excludeFromSemantics: excludeFromSemantics,
-      clipBehavior: clipBehavior,
-    );
-  }
-
-  String get path => _assetName;
 }

@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:wallpaper_hub/core/constants/constant.dart';
+import 'package:wallpaper_hub/core/app_configs/screen_names.dart';
 import 'package:wallpaper_hub/core/cubit/home_screen_cubit/home_screen_cubit.dart';
-import 'package:wallpaper_hub/src/home_screen/components/image_gridview.dart';
+import 'package:wallpaper_hub/core/models/wallpaper_model.dart';
 import 'package:wallpaper_hub/src/static_pages/generic_screen.dart';
 import 'package:wallpaper_hub/src/static_pages/loading_screen.dart';
-import 'package:wallpaper_hub/src/static_pages/no_internet_connection.dart';
 import 'package:wallpaper_hub/src/widget/custom_app_bar.dart';
 
 import 'components/categories_card.dart';
+import 'components/image_builder.dart';
 import 'components/search_bar.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -23,54 +23,101 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final ScrollController _scrollController = ScrollController();
+  int page = 1;
+  List<dynamic> allWallpapers = [];
   @override
   void initState() {
-    WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
-      if (widget.searchText != null) {
-        context.read<HomeScreenCubit>().searchImages("${widget.searchText}");
-      } else {
-        context.read<HomeScreenCubit>().fectchImages();
+    _fetchInfo(page);
+    _scrollController.addListener(() {
+      if (_scrollController.position.pixels ==
+          _scrollController.position.maxScrollExtent) {
+        _fetchInfo(++page);
       }
     });
     super.initState();
+  }
+
+  void _fetchInfo(int page) {
+    if (widget.searchText != null) {
+      context
+          .read<HomeScreenCubit>()
+          .searchImages("${widget.searchText}", page: page);
+    } else {
+      context.read<HomeScreenCubit>().fectchImages(page: page);
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(height: widget.searchText != null ? 55.0 : 0.0),
-      body: SingleChildScrollView(
-        physics: const ScrollPhysics(),
-        child: BlocBuilder<HomeScreenCubit, HomeScreenState>(
-          builder: (context, state) {
-            if (state is LoadingState) {
-              return const LoadingScreen();
-            } else if (state is ImageLoadedState) {
-              final models = state.models;
-              return state.isNointernetConnection
-                  ? const NoInternetConnection()
-                  : Column(
-                      children: [
-                        const SearchBar(),
-                        CategoriesCard(),
-                        state.models.isEmpty
-                            ? GenericScreen(
-                                buttonText: "Explore",
-                                ontab: () => context
-                                    .read<HomeScreenCubit>()
-                                    .fectchImages(),
-                                errorMessage: Constants.noImagesFound,
-                              )
-                            : ImageGridView(models: models)
-                      ],
-                    );
-            } else if (state is ErrorState) {
-              return const GenericScreen();
-            } else {
-              return const Center(child: Text("Something went wrong"));
-            }
-          },
-        ),
+      body: BlocBuilder<HomeScreenCubit, HomeScreenState>(
+        buildWhen: (previous, current) {
+          if (current is LoadingState) {
+            return false;
+          } else {
+            return true;
+          }
+        },
+        builder: (context, state) {
+          if (state is LoadingState) {
+            return const LoadingScreen();
+          } else if (state is ImageLoadedState) {
+            final currentWallpapers = state.models;
+            allWallpapers.addAll(currentWallpapers);
+            return state.isNointernetConnection
+                ? const GenericScreen(errorMessage: 'No internet connection')
+                : CustomScrollView(
+                    controller: _scrollController,
+                    physics: const ScrollPhysics(),
+                    slivers: <Widget>[
+                      const SliverToBoxAdapter(
+                        child: SearchBar(),
+                      ),
+                      SliverToBoxAdapter(
+                        child: CategoriesCard(),
+                      ),
+                      allWallpapers.isEmpty
+                          ? const SliverToBoxAdapter(child: GenericScreen())
+                          : SliverGrid(
+                              gridDelegate:
+                                  const SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 2,
+                                childAspectRatio: 0.7,
+                                mainAxisSpacing: 6.0,
+                                crossAxisSpacing: 6.0,
+                              ),
+                              delegate: SliverChildBuilderDelegate(
+                                (context, index) {
+                                  final WallpaperModel wallpaperModel =
+                                      allWallpapers[index];
+                                  return GestureDetector(
+                                    onTap: () {
+                                      Navigator.of(context).pushNamed(
+                                        ScreenNames.imageViewScreen,
+                                        arguments: {
+                                          "wallpaperModel": wallpaperModel
+                                        },
+                                      );
+                                    },
+                                    child: ImageBuilder(
+                                      imageUrl:
+                                          "${wallpaperModel.src?.original}",
+                                    ),
+                                  );
+                                },
+                                childCount: allWallpapers.length,
+                              ),
+                            ),
+                    ],
+                  );
+          } else if (state is ErrorState) {
+            return const GenericScreen();
+          } else {
+            return const GenericScreen();
+          }
+        },
       ),
     );
   }

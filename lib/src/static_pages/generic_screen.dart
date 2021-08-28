@@ -1,17 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:wallpaper_hub/gen/assets.gen.dart';
-import 'package:wallpaper_hub/src/widget/primary_button.dart';
 
 class GenericScreen extends StatefulWidget {
   final String? errorMessage;
-  final String? buttonText;
-  final VoidCallback? ontab;
 
   const GenericScreen({
     Key? key,
-    this.errorMessage = """We couldn't find the page you\nare looking for.""",
-    this.buttonText = 'Refresh',
-    this.ontab,
+    this.errorMessage = """We couldn't find the images you\nare looking for.""",
   }) : super(key: key);
 
   @override
@@ -28,8 +23,8 @@ class _ErrorScreenState extends State<GenericScreen> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          SizedBox(height: _size.height * 0.03),
-          Assets.images.crash404Copy.image(width: _size.width),
+          SizedBox(height: _size.height * 0.1),
+          Assets.images.notFound.image(width: _size.width),
           Text(
             "Whoops!",
             textAlign: TextAlign.center,
@@ -37,7 +32,7 @@ class _ErrorScreenState extends State<GenericScreen> {
               fontWeight: FontWeight.w600,
             ),
           ),
-          SizedBox(height: _size.height * 0.02),
+          SizedBox(height: _size.height * 0.05),
           Text(
             "${widget.errorMessage}",
             textAlign: TextAlign.center,
@@ -45,11 +40,6 @@ class _ErrorScreenState extends State<GenericScreen> {
               color: Colors.grey,
             ),
           ),
-          SizedBox(height: _size.height * 0.1),
-          PrimaryButton(
-            text: "${widget.buttonText}",
-            onTap: widget.ontab ?? () => setState(() {}),
-          )
         ],
       ),
     );

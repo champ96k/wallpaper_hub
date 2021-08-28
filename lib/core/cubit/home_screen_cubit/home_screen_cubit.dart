@@ -10,7 +10,7 @@ class HomeScreenCubit extends Cubit<HomeScreenState> {
   final WallpaperRepository repository;
   HomeScreenCubit({required this.repository}) : super(LoadingState());
 
-  void fectchImages() async {
+  void fectchImages({int page = 1}) async {
     emit(LoadingState());
     final _connectivityResult = await (Connectivity().checkConnectivity());
     print(_connectivityResult);
@@ -18,7 +18,7 @@ class HomeScreenCubit extends Cubit<HomeScreenState> {
       emit(ImageLoadedState(models: [], isNointernetConnection: true));
     } else {
       try {
-        final models = await repository.fetchImages();
+        final models = await repository.fetchImages(page: page);
         emit(ImageLoadedState(models: models, isNointernetConnection: false));
       } catch (e) {
         emit(ErrorState("Error: $e"));
@@ -26,11 +26,12 @@ class HomeScreenCubit extends Cubit<HomeScreenState> {
     }
   }
 
-  void searchImages(String imageName) async {
+  void searchImages(String imageName, {int page = 1}) async {
     try {
       emit(LoadingState());
       final models = await repository.fetchImages(
-        path: "${Constants.searchBaseURL}'$imageName&per_page=15&page=1'}",
+        path: "${Constants.searchBaseURL}'$imageName&per_page=15&page'}",
+        page: page,
       );
       emit(ImageLoadedState(models: models, isNointernetConnection: false));
     } catch (e) {

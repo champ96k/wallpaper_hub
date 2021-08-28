@@ -10,9 +10,12 @@ class WallpaperRepository {
     required HttpService httpService,
   }) : _httpService = httpService;
 
-  Future<List<dynamic>> fetchImages({String path = Constants.baseURL}) async {
+  Future<List<dynamic>> fetchImages({
+    String path = Constants.baseURL,
+    required int page,
+  }) async {
     try {
-      final response = await _httpService.handleGetRequest(path);
+      final response = await _httpService.handleGetRequest("$path$page");
       return (response.data['photos'])
           .map((e) => WallpaperModel.fromJson(e))
           .toList();

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:wallpaper_hub/core/constants/constant.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wallpaper_hub/core/cubit/home_screen_cubit/home_screen_cubit.dart';
+import 'package:wallpaper_hub/src/home_screen/home_screen.dart';
 
 class CategoriesCard extends StatefulWidget {
   @override
@@ -25,9 +26,17 @@ class _CategoriesCardState extends State<CategoriesCard> {
             padding: const EdgeInsets.symmetric(horizontal: 1.0),
             child: GestureDetector(
               onTap: () {
-                context
-                    .read<HomeScreenCubit>()
-                    .searchImages(Constants.categoriesTitle[index]);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => BlocProvider.value(
+                      value: BlocProvider.of<HomeScreenCubit>(context),
+                      child: HomeScreen(
+                        searchText: Constants.categoriesTitle[index],
+                      ),
+                    ),
+                  ),
+                );
               },
               child: Card(
                 shape: RoundedRectangleBorder(
