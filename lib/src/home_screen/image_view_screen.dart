@@ -45,6 +45,16 @@ class ImageViewScreen extends StatelessWidget {
               height: _size.height,
               width: _size.width,
               fit: BoxFit.cover,
+              progressIndicatorBuilder: (context, url, downloadProgress) {
+                return const Center(
+                  child: Text("Loading..."),
+                );
+              },
+              errorWidget: (context, url, error) {
+                return const Center(
+                  child: Text("Error 404"),
+                );
+              },
             ),
           ),
           Positioned(

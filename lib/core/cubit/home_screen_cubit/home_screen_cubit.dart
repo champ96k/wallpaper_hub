@@ -10,7 +10,7 @@ class HomeScreenCubit extends Cubit<HomeScreenState> {
   final WallpaperRepository repository;
   HomeScreenCubit({required this.repository}) : super(LoadingState());
 
-  void fectchImages({int page = 1}) async {
+  void fectchImages({required int page}) async {
     emit(LoadingState());
     final _connectivityResult = await (Connectivity().checkConnectivity());
     print(_connectivityResult);
@@ -26,7 +26,7 @@ class HomeScreenCubit extends Cubit<HomeScreenState> {
     }
   }
 
-  void searchImages(String imageName, {int page = 1}) async {
+  void searchImages(String imageName, {required int page}) async {
     try {
       emit(LoadingState());
       final models = await repository.fetchImages(

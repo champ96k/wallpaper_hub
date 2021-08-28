@@ -72,12 +72,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     controller: _scrollController,
                     physics: const ScrollPhysics(),
                     slivers: <Widget>[
-                      const SliverToBoxAdapter(
-                        child: SearchBar(),
-                      ),
-                      SliverToBoxAdapter(
-                        child: CategoriesCard(),
-                      ),
+                      const SliverToBoxAdapter(child: SearchBar()),
+                      SliverToBoxAdapter(child: CategoriesCard()),
                       allWallpapers.isEmpty
                           ? const SliverToBoxAdapter(child: GenericScreen())
                           : SliverGrid(
@@ -102,9 +98,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                       );
                                     },
                                     child: ImageBuilder(
-                                      imageUrl:
-                                          "${wallpaperModel.src?.original}",
-                                    ),
+                                        imageUrl:
+                                            "${wallpaperModel.src?.medium}"),
                                   );
                                 },
                                 childCount: allWallpapers.length,

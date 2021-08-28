@@ -68,7 +68,7 @@ class _BookmarkScreenState extends State<BookmarkScreen> {
                             );
                           },
                           child: ImageBuilder(
-                            imageUrl: "${wallpaperModel.src?.original}",
+                            imageUrl: "${wallpaperModel.src?.medium}",
                           ),
                         );
                       },
