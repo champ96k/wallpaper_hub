@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:wallpaper_hub/core/cubit/bookmark_cubit/bookmark_cubit.dart';
 import 'package:wallpaper_hub/core/models/wallpaper_model.dart';
 
@@ -80,7 +81,9 @@ class ImageViewScreen extends StatelessWidget {
             right: _size.width * 0.2,
             bottom: _size.height * 0.12,
             child: InkWell(
-              onTap: () {},
+              onTap: () async => await canLaunch("${wallpaperModel.url}")
+                  ? await launch("${wallpaperModel.url}")
+                  : throw 'Could not launch ${wallpaperModel.url}',
               child: Text(
                 "© by ${wallpaperModel.photographer}",
                 textAlign: TextAlign.center,
