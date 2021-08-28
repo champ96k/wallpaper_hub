@@ -40,6 +40,8 @@ class HomeScreenCubit extends Cubit<HomeScreenState> {
     }
   }
 
+  void saveToBookmarks(WallpaperModel model) async {}
+
   Future<List<WallpaperModel>> getBookmarksImages() async {
     return [];
   }

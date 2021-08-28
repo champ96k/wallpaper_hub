@@ -6,7 +6,6 @@ import 'package:wallpaper_hub/src/home_screen/components/image_gridview.dart';
 import 'package:wallpaper_hub/src/static_pages/generic_screen.dart';
 import 'package:wallpaper_hub/src/static_pages/loading_screen.dart';
 import 'package:wallpaper_hub/src/static_pages/no_internet_connection.dart';
-import 'package:wallpaper_hub/src/widget/custom_app_bar.dart';
 
 import 'components/categories_card.dart';
 import 'components/search_bar.dart';
@@ -38,7 +37,6 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(),
       body: SingleChildScrollView(
         physics: const ScrollPhysics(),
         child: BlocBuilder<HomeScreenCubit, HomeScreenState>(
