@@ -104,3 +104,7 @@ $ flutter packages pub run build_runner build --delete-conflicting-outputs
 $ fluttergen
 $ flutter run
 ```
+
+### Download android buidl APK
+
+[APK](https://drive.google.com/file/d/1JIbfYSKD5IMAltIpfL2qVtH_QWTGiCpB/view?usp=sharing)

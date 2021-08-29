@@ -110,7 +110,7 @@ class _HomeScreenState extends State<HomeScreen> {
           } else if (state is ErrorState) {
             return const GenericScreen();
           } else {
-            return const GenericScreen();
+            return const GenericScreen(errorMessage: "Something went wrong");
           }
         },
       ),
