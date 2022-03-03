@@ -105,6 +105,7 @@ $ fluttergen
 $ flutter run
 ```
 
-### Download android buidl APK
+### Demo Video
 
-[APK](https://drive.google.com/file/d/1JIbfYSKD5IMAltIpfL2qVtH_QWTGiCpB/view?usp=sharing)
+[![Watch the video](http://img.youtube.com/vi/3b-FcKnzhg4/hqdefault.jpg)](https://youtu.be/3b-FcKnzhg4)
+
