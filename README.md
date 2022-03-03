@@ -107,5 +107,5 @@ $ flutter run
 
 ### Demo Video
 
-[![Watch the video](http://img.youtube.com/vi/3b-FcKnzhg4/hqdefault.jpg)](https://youtu.be/3b-FcKnzhg4)
+
 
