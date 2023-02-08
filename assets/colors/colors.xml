@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primaryGreen">#00D09C</color>
+    <color name="primaryGrey">#D9D9D9</color>
+    <color name="secondaryBlack">#262626</color>
+    <color name="primaryIndigo">#440DCC</color>
+    <color name="secondaryIndigo">#21277F</color>
+    <color name="golden">#FFD159</color>
+    <color name="white">#FFFFFF</color>
+    <color name="secondaryWhite">#CCCCCC</color>
+    <color name="black">#000000</color>
+    <color name="secondaryBlack">#262626</color>
+    <color name="secondaryYellow">#00D09C</color>
+</resources>

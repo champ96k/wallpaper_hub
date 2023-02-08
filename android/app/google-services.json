@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "448909244836",
+    "project_id": "wallpaper-hub-825e2",
+    "storage_bucket": "wallpaper-hub-825e2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:448909244836:android:092085d64585ab21fb2931",
+        "android_client_info": {
+          "package_name": "com.example.wallpaper_hub"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "448909244836-arpi6e7sf3qmjj49qn6kahm7nv1n1ff3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyChfiec8hdFUu3gqV9wEgnTgmmhngEHFCk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "448909244836-arpi6e7sf3qmjj49qn6kahm7nv1n1ff3.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "448909244836-8n3umr9nu3l916c20dh6b10m8mqf5lj4.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.wallpaperHub"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
